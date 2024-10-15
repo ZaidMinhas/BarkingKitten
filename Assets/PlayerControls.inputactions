@@ -33,10 +33,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "New action",
+                    "name": "Aim",
                     "type": "PassThrough",
                     "id": "44d9d802-db24-49f7-b1a9-0884c7a7b3df",
                     "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Call",
+                    "type": "Button",
+                    "id": "31cc9f86-0460-4b30-960b-868a5868bfa7",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -83,7 +92,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e646190-c0a3-4f4b-93c0-98e783694c6f",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Call",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -55,10 +55,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Aim"",
                     ""type"": ""PassThrough"",
                     ""id"": ""44d9d802-db24-49f7-b1a9-0884c7a7b3df"",
                     ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Call"",
+                    ""type"": ""Button"",
+                    ""id"": ""31cc9f86-0460-4b30-960b-868a5868bfa7"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -105,7 +114,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e646190-c0a3-4f4b-93c0-98e783694c6f"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Call"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -119,7 +139,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
-        m_Gameplay_Newaction = m_Gameplay.FindAction("New action", throwIfNotFound: true);
+        m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
+        m_Gameplay_Call = m_Gameplay.FindAction("Call", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,7 +205,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Crouch;
-    private readonly InputAction m_Gameplay_Newaction;
+    private readonly InputAction m_Gameplay_Aim;
+    private readonly InputAction m_Gameplay_Call;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -192,7 +214,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
-        public InputAction @Newaction => m_Wrapper.m_Gameplay_Newaction;
+        public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
+        public InputAction @Call => m_Wrapper.m_Gameplay_Call;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,9 +234,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
+            @Call.started += instance.OnCall;
+            @Call.performed += instance.OnCall;
+            @Call.canceled += instance.OnCall;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -227,9 +253,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
+            @Call.started -= instance.OnCall;
+            @Call.performed -= instance.OnCall;
+            @Call.canceled -= instance.OnCall;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -252,6 +281,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnCall(InputAction.CallbackContext context);
     }
 }
