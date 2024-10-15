@@ -52,7 +52,7 @@ public class BarkingKitten : MonoBehaviour
             distance = player.transform.position.x - transform.position.x ;
             direction = Mathf.Sign(distance);
             distance = Mathf.Abs(distance);
-            if(distance>totalDistance){
+            if(distance>=totalDistance){
                 idle = false;
                 walking = true;
                 animator.SetBool("isMoving",true);
@@ -68,7 +68,7 @@ public class BarkingKitten : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
             distance = Mathf.Abs(distance);
-            if(distance<=1){
+            if(distance<1){
                 idle = true;
                 walking = false;
                 animator.SetBool("isMoving",false);
