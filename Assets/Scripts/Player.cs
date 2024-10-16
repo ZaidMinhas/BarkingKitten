@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isCrouching;
     [SerializeField] GameObject pivot;
+
+    [SerializeField] Gun gun;
     float move;
 
     private Vector2 aimInput;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
         controls.Gameplay.Aim.canceled += ctx => aimInput = new Vector2(aimInput.x,aimInput.y);
 
         controls.Gameplay.Call.performed += ctx => Call();
+
+        controls.Gameplay.Shoot.performed += ctx => Shoot();
     }
 
     void Jump(){
@@ -74,6 +78,10 @@ public class Player : MonoBehaviour
 
     void Call(){
         agentBK.transform.position = this.transform.position;
+    }
+
+    void Shoot(){
+        gun.Shoot();
     }
 
     void OnEnable(){
