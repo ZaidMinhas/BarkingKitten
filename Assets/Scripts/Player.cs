@@ -25,8 +25,16 @@ public class Player : MonoBehaviour
 
     public float crouch;
 
+    bool canBark;
+
+    float barkCooldown;
+
+    [SerializeField] float barkCooldownReset;
+
     //Awake is called before the game even starts.
     void Awake(){
+        canBark = true;
+        
         isCrouching = false;
         controls = new PlayerControls();
 
@@ -45,6 +53,8 @@ public class Player : MonoBehaviour
         controls.Gameplay.Call.performed += ctx => Call();
 
         controls.Gameplay.Shoot.performed += ctx => Shoot();
+
+        controls.Gameplay.Bark.performed += ctx => Bark();
     }
 
     void Jump(){
@@ -84,6 +94,14 @@ public class Player : MonoBehaviour
         gun.Shoot();
     }
 
+    void Bark(){
+        if(canBark){
+            agentBK.Bark();
+            barkCooldown = barkCooldownReset;
+            canBark = false;
+        }
+    }
+
     void OnEnable(){
         controls.Gameplay.Enable();
     }
@@ -101,11 +119,20 @@ public class Player : MonoBehaviour
     void Update()
     {
     //Movement
-    rb.velocity = new Vector2(move * speed,rb.velocity.y);
+        rb.velocity = new Vector2(move * speed,rb.velocity.y);
     //Aiming
-    if(Mathf.Abs(aimInput.x)+Mathf.Abs(aimInput.y)>0.9){
-        angle = Mathf.Atan2(aimInput.y,aimInput.x) * Mathf.Rad2Deg;
-        pivot.transform.rotation = Quaternion.Euler(0,0,angle);
+        if(Mathf.Abs(aimInput.x)+Mathf.Abs(aimInput.y)>0.9){
+            angle = Mathf.Atan2(aimInput.y,aimInput.x) * Mathf.Rad2Deg;
+            pivot.transform.rotation = Quaternion.Euler(0,0,angle);
+            }
+    //BarkCooldown
+        if(!canBark){
+            barkCooldown -= Time.deltaTime;
+            if(barkCooldown<=0){
+                canBark = true;
+            }
         }
     }
+
+
 }

@@ -8,6 +8,10 @@ public class BarkingKitten : MonoBehaviour
 {
     Animator animator;
 
+    [SerializeField] float barkRadius;
+
+    AudioSource barkSound;
+
     [SerializeField] float jumpSpeed;
 
     Rigidbody2D rb;
@@ -31,6 +35,7 @@ public class BarkingKitten : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        barkSound = GetComponent<AudioSource>();
     }
 
     public void Jump(){
@@ -42,6 +47,16 @@ public class BarkingKitten : MonoBehaviour
                 isCrouching = false;
             }*/
             rb.AddForce(new Vector2(0f,jumpSpeed*10));
+        }
+    }
+
+    public void Bark(){
+       barkSound.Play();
+       Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position,barkRadius);
+        foreach(Collider2D c in colliders){
+            if(c.gameObject.CompareTag("Enemy")){
+                c.GetComponent<Enemy>().Death();
+            }
         }
     }
 
