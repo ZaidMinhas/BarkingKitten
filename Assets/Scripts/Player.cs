@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     void Jump(){
         if(rb.velocity.y==0){
             if(isCrouching){
-                this.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                this.transform.localScale = new Vector3(0.4f, 0.3f, 1);
                 this.transform.position += Vector3.up * crouch;
                 speed = speed/crouch;
                 isCrouching = false;
@@ -58,13 +58,13 @@ public class Player : MonoBehaviour
     void Crouch(){
         if(rb.velocity.y==0){
             if(!isCrouching){
-                this.transform.localScale = new Vector3(1.5f,0.75f,1);
+                this.transform.localScale = new Vector3(0.4f,0.15f,1);
                 this.transform.position += Vector3.down * crouch;
                 isCrouching = true;
                 speed = speed*crouch;
             }
             else{
-                this.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                this.transform.localScale = new Vector3(0.4f, 0.3f, 1);
                 this.transform.position += Vector3.up * crouch;
                 isCrouching = false;
                 speed = speed/crouch;
