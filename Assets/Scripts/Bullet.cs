@@ -34,6 +34,10 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("Enemy")){
+            collision.gameObject.GetComponent<Enemy>().Death();
+            Destroy(gameObject);
+        }
         if(ricochet==maxRicochet){
             Destroy(gameObject);
         }
