@@ -35,12 +35,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] HUD HUD;
 
+    Animator animator;
+
     //Awake is called before the game even starts.
     void Awake(){
         canBark = true;
         
         isCrouching = false;
         controls = new PlayerControls();
+
+        animator = GetComponent<Animator>();
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx =>move = 0;
