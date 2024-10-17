@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] BarkingKitten agentBK;
+
     PlayerControls controls;
     private Rigidbody2D rb;
     private bool isCrouching;
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
     float barkCooldown;
 
     [SerializeField] float barkCooldownReset;
+
+    [SerializeField] HUD HUD;
 
     //Awake is called before the game even starts.
     void Awake(){
@@ -96,6 +100,7 @@ public class Player : MonoBehaviour
 
     void Bark(){
         if(canBark){
+            HUD.barked();
             agentBK.Bark();
             barkCooldown = barkCooldownReset;
             canBark = false;
@@ -129,6 +134,7 @@ public class Player : MonoBehaviour
         if(!canBark){
             barkCooldown -= Time.deltaTime;
             if(barkCooldown<=0){
+                HUD.canBark();
                 canBark = true;
             }
         }
