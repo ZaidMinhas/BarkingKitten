@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
 
     Animator animator;
 
+    SpriteRenderer spriteRenderer;
+
     //Awake is called before the game even starts.
     void Awake(){
         canBark = true;
@@ -45,6 +47,8 @@ public class Player : MonoBehaviour
         controls = new PlayerControls();
 
         animator = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         speed = moveSpeed;
 
@@ -147,7 +151,16 @@ public class Player : MonoBehaviour
         if(Mathf.Abs(aimInput.x)+Mathf.Abs(aimInput.y)>0.9){
             angle = Mathf.Atan2(aimInput.y,aimInput.x) * Mathf.Rad2Deg;
             pivot.transform.rotation = Quaternion.Euler(0,0,angle);
+        }
+        if(angle>90||angle<-90){
+            if(!spriteRenderer.flipX){
+                spriteRenderer.flipX = true;
             }
+        }
+        else if(spriteRenderer.flipX){
+            spriteRenderer.flipX = false;
+        }
+        
     //BarkCooldown
         if(!canBark){
             barkCooldown -= Time.deltaTime;

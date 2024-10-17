@@ -190,6 +190,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b65956b5234dd6e43845bbe3ef5dc7ec, type: 3}
+--- !u!114 &646814900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4710246046967008488, guid: 6b02d24a55d3dd6469b78eb1e62dbf47, type: 3}
+  m_PrefabInstance: {fileID: 9089964376412623620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a52fe18a8b83d438464b9d6619c3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789809975
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +700,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5399821474177512480, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 646814900}
+    - target: {fileID: 5399821474177512480, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
       propertyPath: agentBK
       value: 
       objectReference: {fileID: 1492386772}
@@ -699,6 +714,38 @@ PrefabInstance:
     - target: {fileID: 5399821474177512480, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
       propertyPath: barkCooldownReset
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881597695924565801, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7057885491469555899, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
       propertyPath: m_LocalPosition.x
