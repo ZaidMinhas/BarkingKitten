@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isCrouching;
     [SerializeField] GameObject pivot;
-
     [SerializeField] Gun gun;
     float move;
 
@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
 
     float angle;
 
-    public float speed;
+    float speed;
     [SerializeField] float jumpSpeed;
 
-    public float crouch;
+    [SerializeField] float moveSpeed; 
 
     bool canBark;
 
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
         controls = new PlayerControls();
 
         animator = GetComponent<Animator>();
+
+        speed = moveSpeed;
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx =>move = 0;
@@ -68,10 +70,10 @@ public class Player : MonoBehaviour
     void Jump(){
         if(rb.velocity.y==0){
             if(isCrouching){
-                this.transform.localScale = new Vector3(0.4f, 0.3f, 1);
-                this.transform.position += Vector3.up * crouch;
-                speed = speed/crouch;
+                speed = moveSpeed;
                 isCrouching = false;
+                animator.SetBool("isCrouching",false);
+                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y+2.7f,0);
             }
             rb.AddForce(new Vector2(0f,jumpSpeed*10));
         }
@@ -80,16 +82,16 @@ public class Player : MonoBehaviour
     void Crouch(){
         if(rb.velocity.y==0){
             if(!isCrouching){
-                this.transform.localScale = new Vector3(0.4f,0.15f,1);
-                this.transform.position += Vector3.down * crouch;
                 isCrouching = true;
-                speed = speed*crouch;
+                speed = 0;
+                animator.SetBool("isCrouching",true);
+                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y-2.7f,0);
             }
             else{
-                this.transform.localScale = new Vector3(0.4f, 0.3f, 1);
-                this.transform.position += Vector3.up * crouch;
                 isCrouching = false;
-                speed = speed/crouch;
+                speed = moveSpeed;
+                animator.SetBool("isCrouching",false);
+                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y+2.7f,0);
             }
        }
     }
@@ -129,6 +131,18 @@ public class Player : MonoBehaviour
     {
     //Movement
         rb.velocity = new Vector2(move * speed,rb.velocity.y);
+        if(rb.velocity.x!=0){
+            animator.SetBool("isWalking",true);
+        }
+        else{
+            animator.SetBool("isWalking",false);
+        }
+        if(rb.velocity.y!=0){
+                animator.SetBool("isJumping",true);
+            }
+        else{
+                animator.SetBool("isJumping",false);
+        }
     //Aiming
         if(Mathf.Abs(aimInput.x)+Mathf.Abs(aimInput.y)>0.9){
             angle = Mathf.Atan2(aimInput.y,aimInput.x) * Mathf.Rad2Deg;

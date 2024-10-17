@@ -693,6 +693,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492386772}
     - target: {fileID: 5399821474177512480, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399821474177512480, guid: 10009b16ff42541428ae94dbfd95fb3d, type: 3}
       propertyPath: barkCooldownReset
       value: 5
       objectReference: {fileID: 0}
