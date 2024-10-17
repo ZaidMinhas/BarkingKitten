@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isCrouching;
     [SerializeField] GameObject pivot;
+
     [SerializeField] Gun gun;
     float move;
 
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
 
         speed = moveSpeed;
 
