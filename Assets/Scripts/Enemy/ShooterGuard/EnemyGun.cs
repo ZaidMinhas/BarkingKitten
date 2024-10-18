@@ -5,10 +5,11 @@ using UnityEngine;
 public class EnemyGun : MonoBehaviour
 {
     
-    [SerializeField] Bullet bulletPrefab;
+    [SerializeField] EnemyBullet bulletPrefab;
     
     [SerializeField] private float fireRate;
     [SerializeField] private int bulletCount;
+    [SerializeField] private Transform muzzle;
     private float nextFireTime;
     
     
@@ -17,7 +18,7 @@ public class EnemyGun : MonoBehaviour
         
         if (Time.time >= nextFireTime)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            Instantiate(bulletPrefab, muzzle.transform.position, transform.rotation);
             nextFireTime = Time.time + fireRate;
             
         }        

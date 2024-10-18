@@ -11,7 +11,7 @@ public class AttackGuardState : GuardState
 
     public override void Start()
     {
-        ctx.SpawnGun();
+        
     }
 
     // Update is called once per frame

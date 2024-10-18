@@ -12,17 +12,17 @@ public class Bullet : MonoBehaviour
 
     float move;
 
-    [SerializeField]float speed;
+    [SerializeField] float speed;
 
     int ricochet;
 
     [SerializeField] int maxRicochet;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
-        sc=GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        sc = GetComponent<CircleCollider2D>();
         ricochet = 0;
         rb.velocity = Vector2.zero;
     }
@@ -33,20 +33,26 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * Time.fixedDeltaTime * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.CompareTag("Enemy")){
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
             collision.gameObject.GetComponent<Enemy>().Death();
             Destroy(gameObject);
         }
-        if(ricochet==maxRicochet){
+        if (ricochet == maxRicochet)
+        {
             Destroy(gameObject);
         }
-        else{
-            if(Mathf.Abs(rb.velocity.y) < 1){
+        else
+        {
+            if (Mathf.Abs(rb.velocity.y) < 1)
+            {
                 transform.rotation = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z);
             }
-            else if(Math.Abs(rb.velocity.x) < 1){
-                transform.rotation = Quaternion.Euler(0, 0, 180-transform.rotation.eulerAngles.z);
+            else if (Math.Abs(rb.velocity.x) < 1)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 180 - transform.rotation.eulerAngles.z);
             }
             ricochet++;
         }

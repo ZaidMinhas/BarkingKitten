@@ -8,23 +8,28 @@ public class ShootingGuard : StateManager
     [SerializeField] private float playerInView;
     [SerializeField] private float playerInRange;
     [SerializeField] private float speed;
-    [SerializeField] private EnemyGun gunPrefab;
+    [SerializeField] private EnemyGun gun;
     private Player player;
     private float playerDistance;
-    private EnemyGun gun;
-
+    
+    private bool facingRight = true;
+    
     public void Start()
     {
         player = GameManager.Instance.player;
         CurrentState = new IdleGuardState(this);
         CurrentState.Start();
+
+        
+        
+
         
     }
 
     public bool isPlayerNearby()
     {
         playerDistance = player.transform.position.x - transform.position.x;
-        print("Checking if player is nearby");
+        
         return (Mathf.Abs(playerDistance) < playerInView);
     }
 
@@ -37,14 +42,23 @@ public class ShootingGuard : StateManager
     public void moveToPlayer()
     {
         playerDistance = player.transform.position.x - transform.position.x;
+        
         float direction = Mathf.Sign(playerDistance);
-        transform.Translate(Vector3.right * (direction * speed * Time.deltaTime));
+        if (direction == 1 && !facingRight)
+        {
+            transform.Rotate(Vector2.up * 180);
+            facingRight = true;
+        }
+        else if (direction == -1 && facingRight)
+        {
+
+            transform.Rotate(Vector2.up * 180);
+            facingRight = false;
+        }
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    public void SpawnGun()
-    {
-        gun = Instantiate(gunPrefab, transform.position, Quaternion.identity);
-    }
+    
 
     public void Shoot()
     {

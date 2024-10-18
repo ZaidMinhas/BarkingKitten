@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6359a164-4515-43c4-b13c-d8f2982b1550" name="Changes" comment="" />
+    <list default="true" id="6359a164-4515-43c4-b13c-d8f2982b1550" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BarkingKitten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BarkingKitten/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyGun.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyGun.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZaidScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ZaidScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/AttackGuardState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/AttackGuardState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/EnemyGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/EnemyGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/ShootingGuard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/ShootingGuard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,10 +35,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/ShootingGuard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/State.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2nV01MMPjVWensmxQLEfQRN1gZy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,7 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Zaid",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,6 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729042721168</updated>
       <workItem from="1729042723960" duration="10140000" />
+      <workItem from="1729285150230" duration="1027000" />
     </task>
     <servers />
   </component>

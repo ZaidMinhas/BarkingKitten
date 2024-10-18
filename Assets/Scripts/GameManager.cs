@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
         {
+            player = FindAnyObjectByType(typeof(Player)) as Player;
             Instance = this;
             DontDestroyOnLoad(gameObject);  // Keeps the GameManager alive between scenes
         }
