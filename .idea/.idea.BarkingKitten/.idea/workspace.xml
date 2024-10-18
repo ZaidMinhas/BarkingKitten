@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6359a164-4515-43c4-b13c-d8f2982b1550" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BarkingKitten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BarkingKitten/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EnemyGun.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EnemyGun.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ZaidScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ZaidScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/AttackGuardState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/AttackGuardState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/EnemyGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/EnemyGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/ShootingGuard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/ShooterGuard/ShootingGuard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyBullet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729042721168</updated>
       <workItem from="1729042723960" duration="10140000" />
-      <workItem from="1729285150230" duration="1027000" />
+      <workItem from="1729285150230" duration="1343000" />
     </task>
     <servers />
   </component>

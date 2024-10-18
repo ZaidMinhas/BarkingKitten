@@ -21,15 +21,16 @@ public class EnemyBullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            print("HIT");
+            
             //Player player = collision.collider.GetComponent<Player>();
             //Reduce health
             Destroy(gameObject);
             
         }
     }
+
 }
