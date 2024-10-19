@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] BarkingKitten agentBK;
 
+    [SerializeField] Camera playerCamera;
+
     PlayerControls controls;
     private Rigidbody2D rb;
     private bool isCrouching;
@@ -48,6 +50,10 @@ public class Player : MonoBehaviour
 
     bool CrouchHappened;
 
+    bool isHit;
+
+    [SerializeField] int health;
+
     //Awake is called before the game even starts.
     void Awake(){
         canBark = true;
@@ -62,6 +68,8 @@ public class Player : MonoBehaviour
         speed = moveSpeed;
 
         CrouchHappened = false;
+
+        isHit = false;
 
         melee = meleeObject.GetComponent<Melee>();
 
@@ -84,6 +92,20 @@ public class Player : MonoBehaviour
         controls.Gameplay.Melee.performed += ctx => Melee();
 
         controls.Gameplay.Bark.performed += ctx => Bark();
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public void TakeDamage(){
+        health--;
+        HUD.lowerHealth();
+        isHit = true;
+        if(health==0){
+            HUD.GameOver();
+            Destroy(this.gameObject);
+        }
     }
 
     void Jump(){
@@ -152,6 +174,7 @@ public class Player : MonoBehaviour
             barkCooldown = barkCooldownReset;
             canBark = false;
         }
+        TakeDamage();
     }
 
     void OnEnable(){
@@ -170,6 +193,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerCamera.transform.position = new Vector3(transform.position.x,transform.position.y,playerCamera.transform.position.z);
     //Movement
         rb.velocity = new Vector2(move * speed,rb.velocity.y);
         if(rb.velocity.x!=0){

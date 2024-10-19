@@ -31,7 +31,6 @@ public class Melee : MonoBehaviour
         isAttacking = true;
         Collider2D[] colliders = Physics2D.OverlapCapsuleAll(meleeCapsuleCenter.transform.position,new Vector2(3,2),CapsuleDirection2D.Vertical,0);
         foreach(Collider2D c in colliders){
-            Debug.Log(c.name);
             if(c.CompareTag("Enemy")){
                 c.GetComponent<Enemy>().Death();
             }

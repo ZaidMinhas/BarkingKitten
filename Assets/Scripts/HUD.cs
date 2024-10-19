@@ -9,6 +9,12 @@ public class HUD : MonoBehaviour
 
     [SerializeField] Image barkIcon;
 
+    [SerializeField] Image[] healthDisplay;
+
+    [SerializeField] GameObject gameOver;
+
+
+
     public void barked(){
         barkIcon.enabled = false;
     }
@@ -16,15 +22,21 @@ public class HUD : MonoBehaviour
     public void canBark(){
         barkIcon.enabled=true;
     }
-    
-    void Awake(){
-        
+
+    public void lowerHealth(){
+        healthDisplay[player.getHealth()].gameObject.SetActive(false);
     }
+
+    public void GameOver(){
+        barkIcon.gameObject.SetActive(false);
+        gameOver.gameObject.SetActive(true);
+    }
+
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameOver.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
