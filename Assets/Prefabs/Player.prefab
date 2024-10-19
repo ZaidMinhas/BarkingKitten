@@ -32,6 +32,37 @@ Transform:
   - {fileID: 6261299761706200355}
   m_Father: {fileID: 8838303597077087777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &318694725732671243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1273237054284019660}
+  m_Layer: 0
+  m_Name: Melee
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1273237054284019660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318694725732671243}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.049999952, y: 1.44, z: -12.84}
+  m_LocalScale: {x: 2.5, y: 3.3333333, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8838303597077087777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3779010115594972153
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,6 +99,7 @@ Transform:
   m_Children:
   - {fileID: 6907311935121356135}
   - {fileID: 2973095203808775113}
+  - {fileID: 1273237054284019660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7598422785185304887
@@ -136,11 +168,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentBK: {fileID: 0}
   pivot: {fileID: 145501986286226252}
+  melee: {fileID: 318694725732671243}
   gun: {fileID: 2699702459802743036}
   jumpSpeed: 50
   moveSpeed: 10
   barkCooldownReset: 5
   HUD: {fileID: 0}
+  crouchTimer: 1
+  meleeTimer: 0
 --- !u!50 &200692920913905058
 Rigidbody2D:
   serializedVersion: 4

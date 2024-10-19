@@ -14,7 +14,11 @@ public class Player : MonoBehaviour
     PlayerControls controls;
     private Rigidbody2D rb;
     private bool isCrouching;
+
+    private bool isHitting;
     [SerializeField] GameObject pivot;
+
+    [SerializeField] GameObject melee;
 
     [SerializeField] Gun gun;
     float move;
@@ -40,6 +44,8 @@ public class Player : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    bool CrouchHappened;
+
     //Awake is called before the game even starts.
     void Awake(){
         canBark = true;
@@ -53,6 +59,8 @@ public class Player : MonoBehaviour
 
 
         speed = moveSpeed;
+
+        CrouchHappened = false;
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx =>move = 0;
@@ -70,6 +78,8 @@ public class Player : MonoBehaviour
 
         controls.Gameplay.Shoot.performed += ctx => Shoot();
 
+        controls.Gameplay.Melee.performed += ctx => Melee();
+
         controls.Gameplay.Bark.performed += ctx => Bark();
     }
 
@@ -78,28 +88,41 @@ public class Player : MonoBehaviour
             if(isCrouching){
                 speed = moveSpeed;
                 isCrouching = false;
+                animator.SetBool("isJumping",true);
                 animator.SetBool("isCrouching",false);
-                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y+2.7f,0);
             }
+            animator.SetBool("isJumping",true);
             rb.AddForce(new Vector2(0f,jumpSpeed*10));
         }
     }
 
-    void Crouch(){
+    private void Crouch(){
         if(rb.velocity.y==0){
             if(!isCrouching){
                 isCrouching = true;
                 speed = 0;
                 animator.SetBool("isCrouching",true);
-                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y-2.7f,0);
             }
             else{
                 isCrouching = false;
                 speed = moveSpeed;
                 animator.SetBool("isCrouching",false);
-                pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y+2.7f,0);
             }
        }
+    }
+
+    public void movePivotCrouch(){
+        if(!CrouchHappened){
+            pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y-2.7f,0);
+            CrouchHappened = true;
+        }
+    }
+
+    public void movePivotUnCrouch(){
+        if(CrouchHappened){
+            pivot.transform.localPosition = new Vector3(0,pivot.transform.localPosition.y+2.7f,0);
+            CrouchHappened = false;
+        }
     }
 
     void Call(){
@@ -108,6 +131,16 @@ public class Player : MonoBehaviour
 
     void Shoot(){
         gun.Shoot();
+    }
+
+    void Melee(){
+        //Disable pivot,Enable Melee, Does animation, if enemy tagged object is in front of hitbox, it kills the enemy.
+        if(!isHitting){
+            isHitting = true;
+            pivot.SetActive(false);
+            melee.SetActive(true);
+            isHitting = false;
+        }
     }
 
     void Bark(){
@@ -162,7 +195,7 @@ public class Player : MonoBehaviour
         else if(spriteRenderer.flipX){
             spriteRenderer.flipX = false;
         }
-        
+
     //BarkCooldown
         if(!canBark){
             barkCooldown -= Time.deltaTime;

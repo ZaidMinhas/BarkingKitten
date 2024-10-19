@@ -89,6 +89,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""f96860fc-1fd3-48be-a8e6-79dfc0d251cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Bark"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8d1d3a3-98d1-48a4-b780-c2fb1b2eabba"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -183,6 +203,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Call = m_Gameplay.FindAction("Call", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Bark = m_Gameplay.FindAction("Bark", throwIfNotFound: true);
+        m_Gameplay_Melee = m_Gameplay.FindAction("Melee", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Call;
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Bark;
+    private readonly InputAction m_Gameplay_Melee;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -262,6 +284,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Call => m_Wrapper.m_Gameplay_Call;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @Bark => m_Wrapper.m_Gameplay_Bark;
+        public InputAction @Melee => m_Wrapper.m_Gameplay_Melee;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +315,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Bark.started += instance.OnBark;
             @Bark.performed += instance.OnBark;
             @Bark.canceled += instance.OnBark;
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -317,6 +343,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Bark.started -= instance.OnBark;
             @Bark.performed -= instance.OnBark;
             @Bark.canceled -= instance.OnBark;
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -343,5 +372,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnCall(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
     }
 }
