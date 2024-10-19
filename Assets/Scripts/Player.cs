@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
     private bool isHitting;
     [SerializeField] GameObject pivot;
 
-    [SerializeField] GameObject melee;
+    [SerializeField] GameObject meleeObject;
+
+    Melee melee;
 
     [SerializeField] Gun gun;
     float move;
@@ -57,10 +59,11 @@ public class Player : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-
         speed = moveSpeed;
 
         CrouchHappened = false;
+
+        melee = meleeObject.GetComponent<Melee>();
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<float>();
         controls.Gameplay.Move.canceled += ctx =>move = 0;
@@ -135,11 +138,10 @@ public class Player : MonoBehaviour
 
     void Melee(){
         //Disable pivot,Enable Melee, Does animation, if enemy tagged object is in front of hitbox, it kills the enemy.
-        if(!isHitting){
-            isHitting = true;
+        if(!melee.getisAttacking()){
             pivot.SetActive(false);
-            melee.SetActive(true);
-            isHitting = false;
+            meleeObject.SetActive(true);
+            melee.Attack();
         }
     }
 
@@ -190,10 +192,12 @@ public class Player : MonoBehaviour
         if(angle>90||angle<-90){
             if(!spriteRenderer.flipX){
                 spriteRenderer.flipX = true;
+                melee.flipMeleeCapsuleCenter();
             }
         }
         else if(spriteRenderer.flipX){
             spriteRenderer.flipX = false;
+            melee.unFlipMeleeCapsuleCenter();
         }
 
     //BarkCooldown
@@ -204,7 +208,10 @@ public class Player : MonoBehaviour
                 canBark = true;
             }
         }
+    //Ending Attack
+        if(!melee.getisAttacking()){
+            meleeObject.SetActive(false);
+            pivot.SetActive(true);
+        }
     }
-
-
 }

@@ -166,16 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2663b63e08c55304dbe642d62ba2643a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentBK: {fileID: 0}
+  agentBK: {fileID: 5417664294350522640, guid: 951021a25801c9f43914ab9ab2ef0683, type: 3}
   pivot: {fileID: 145501986286226252}
-  melee: {fileID: 318694725732671243}
+  meleeObject: {fileID: 318694725732671243}
   gun: {fileID: 2699702459802743036}
   jumpSpeed: 50
   moveSpeed: 10
   barkCooldownReset: 5
-  HUD: {fileID: 0}
-  crouchTimer: 1
-  meleeTimer: 0
+  HUD: {fileID: 4710246046967008488, guid: 6b02d24a55d3dd6469b78eb1e62dbf47, type: 3}
 --- !u!50 &200692920913905058
 Rigidbody2D:
   serializedVersion: 4
