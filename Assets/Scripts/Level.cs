@@ -22,7 +22,7 @@ public class Level : MonoBehaviour
     public void Update()
     {
         // Check if the player has reached the end of the level
-        if (spawnManagers[currentRoomIndex].currentEnemyCount == 0)
+        if (spawnManagers[currentRoomIndex].currentEnemyCount == spawnManagers[currentRoomIndex].maxEnemies - 1)
         {
             spawnManagers[currentRoomIndex].gameObject.SetActive(false);
             // Move to the next room

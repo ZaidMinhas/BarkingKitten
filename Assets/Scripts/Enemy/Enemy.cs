@@ -39,5 +39,13 @@ public class Enemy : MonoBehaviour
             }
             timer += Time.deltaTime;
         }
+
+        // set animation based on rb velocity
+        if(rb.velocity.x != 0){
+            // set animation to walk right or left
+            
+        } else {
+            // set animation to idle
+        }
     }
 }
