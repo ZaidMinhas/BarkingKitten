@@ -14,11 +14,17 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
+
+    [SerializeField] LayerMask groundLayer;
+
+    [SerializeField] Transform groundCheck;
     
     private PlayerActions playerInputActions;
     [SerializeField] int lives = 9;
 
     [SerializeField] float moveSpeed = 0f;
+
+    [SerializeField] float jumpSpeed = 0f;
 
     private float move;
 
@@ -43,15 +49,29 @@ public class Player : MonoBehaviour
     {
         //Player Movement
         rigidBody.velocity = new Vector2(move * moveSpeed,rigidBody.velocity.y);
+
+        //Debug Mode
+        Debug.DrawRay(groundCheck.position,Vector2.down*3,Color.red);
+
     }
 
-    public void Move(InputAction.CallbackContext context){
-        
+    bool IsGrounded() {
+    Vector2 position = groundCheck.position;
+    Vector2 direction = Vector2.down;
+    float distance = 3.0f;
+    RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+    if (hit.collider != null) {
+        return true;
+    }
+    
+    return false;
     }
 
     public void Jump(InputAction.CallbackContext context){
         if(context.performed){
-            Debug.Log("I am jumping " + context.phase);
+            if(IsGrounded()){
+                rigidBody.AddForce(new Vector2(0f,jumpSpeed*10));
+            }
         }
     }
 }
